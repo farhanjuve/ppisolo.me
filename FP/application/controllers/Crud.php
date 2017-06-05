@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Crud extends CI_Controller {
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('mymodel');
+		$this->load->model('Mymodel');
         $this->load->helper(array('url','download'));	
 	}
     
@@ -164,55 +164,59 @@ class Crud extends CI_Controller {
         }
     }
     
-    /*function bytesToSize1024($bytes, $precision = 2) {
-        $unit = array('B','KB','MB');
-        return @round($bytes / pow(1024, ($i = floor(log($bytes, 1024)))), $precision).' '.$unit[$i];
+    public function do_update1($idartikel){
+        //$dataid = array('id_artikelku' => $idartikel);
+        //var_dump($dataid);
+        $this->load->view('uploadForm_b', array('id_artikelku' => $idartikel));
+        //array('id_artikelku' => $idartikel)
+  
     }
-    $sFileName = $_FILES['image_file']['name'];
-    $sFileType = $_FILES['image_file']['type'];
-    $sFileSize = bytesToSize1024($_FILES['image_file']['size'], 1);
-    echo <<<EOF
-    <p>Your file: {$sFileName} has been successfully received.</p>
-    <p>Type: {$sFileType}</p>
-    <p>Size: {$sFileSize}</p>
-    EOF;*/
     
-	/*public function edit_data($kode_barang){
-		$barang = $this->mymodel->GetBarang("where kode_barang = $kode_barang");
-		$data = array(
-			"kode_barang" => $barang[0]['kode_barang'],
-			"nama_barang" => $barang[0]['nama_barang'],
-			"jumlah" => $barang[0]['jumlah'],
-			"harga" => $barang[0]['harga']
-			 );
-		$this->load->view('form_edit',$data);
+    public function do_update($idartikel){
 
-	}*/
+        var_dump($dataid);
+        
+        if(isset($_POST['update'])) {
+            if(!empty($_FILES['foto']['tmp_name'])) { 
+                //unlink("../data_artikel/$gambar");
+                $ext=strtolower(substr($_FILES['foto']['name'],-3));
+                if($ext=='gif')
+                    $ext=".gif";
+                else
+                    $ext=".png";
+                move_uploaded_file($_FILES['foto']['tmp_name'], "./data_artikel/" . basename(($idartikel).$ext));
+
+            }
+            
+            $updatejudul = $_POST['judul'];
+            $updateisi =  $_POST['konten'];
+            
+            $res = $this->Mymodel->Update('artikel',$updateisi, $updatejudul, $idartikel);
+            
+            if($res>=1){
+                var_dump($dataid);
+                //redirect('admin');
+            } else {
+                echo "masih salah";
+            }
     
-    /*public function do_update(){
-
-		$kode_barang = $_POST['kode_barang'];
-		$nama_barang = $_POST['nama_barang'];
-		$tambah = $_POST['tambah'];
-		$jumlah =  $_POST['jumlah'];
-		
-		$harga = $_POST['harga'];
-
-		$data_update = $jumlah + $tambah;
-		$where = $kode_barang;
-		$res = $this->mymodel->update('barang',$data_update,$where);
-		if($res>=1){
-            redirect('crud/index');
+                /*echo "
+                <script>
+                location.assign('index.php?page=berita&ps=true2');
+                </script>
+                ";*/
         }
-	}*/
+	}
 
-	/*public function do_delete($kode_barang){
-        $wheree = array('kode_barang' => $kode_barang);
-        $res = $this->mymodel->delete('barang',$wheree);
+	public function do_delete($idartikel){
+        $res = $this->Mymodel->Delete('artikel',$idartikel);
         if($res>=1){
-            redirect('crud/index');
-        }
-	}*/
+            redirect ('admin');
+        } else {
+            echo "ada yang salah, kontak admin!";
+        
+	   }
+    }
     
     /*public function add_data(){
         $this->load->view('form_add');

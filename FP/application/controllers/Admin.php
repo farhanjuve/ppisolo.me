@@ -6,7 +6,7 @@ class Admin extends CI_Controller{
 		parent::__construct();
 	
 		if($this->session->userdata('status') != "admin"){
-			echo "hahaha";
+			redirect('crud/daftar');
 		}
 	}
  
