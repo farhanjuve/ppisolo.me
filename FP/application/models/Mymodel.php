@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mymodel extends CI_Model {
 	
-    public function cek($table, $datalogin){
+    public function Cek($table, $datalogin){
         return $this->db->get_where($table,$datalogin);
     }
     
-    public function cekstatus($username){
+    public function Cekstatus($username){
         $datastatus = $this->db->query("SELECT `status` FROM `datadiri` WHERE username = '" . $username . "'");
         $data = $datastatus->result_array();
         return $data[0];
@@ -23,18 +23,18 @@ class Mymodel extends CI_Model {
 		return $res;
 	}
 
-	public function update($tableName, $data, $where){
-		// $res = $this->db->update($tableName, $data, $where);
-		$res = $this->db->query("UPDATE barang SET jumlah = " . $data . " WHERE kode_barang = " . $where);
+	public function Update($tableName, $data1='', $data2='', $where=''){
+		$res = $this->db->query("UPDATE artikel SET isi = '" . $data1 . "' ," . " judul = '" . $data2 . "'" . " WHERE id_artikel = '" . $where ."'");
 		return $res;
 	}
 
-	public function delete($tableName, $where){
-		$res = $this->db->delete($tableName, $where);
+	public function Delete($tableName, $where=''){
+		$res = $this->db->query("DELETE FROM artikel WHERE `id_artikel` = " . $where);
+        //$res = $this->db->delete($tableName, $where);
 		return $res;
 	}
     
-    public function save($url){
+    public function Save($url){
 		$this->db->set('pic', $url);
 		$this->db->insert('barang');
 	}
