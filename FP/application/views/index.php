@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="">
   <meta name="twitter:image" content="">
   
-  <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
+  <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory--> 
   <link href="<?php echo base_url("favicon.ico")?>" rel="shortcut icon">
   
   <!-- Google Fonts -->
@@ -128,9 +128,18 @@
             <p class="about-text">
                 <img src="<?php echo base_url().$gambarberita; ?>" >
                 <?php echo $isiberita; ?>
+            
+        <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
             </p>
         <!--</div>-->
       </div>
+<!-- AddToAny END -->
     </div>
   </section>
   
@@ -170,6 +179,15 @@ Tingkatan Paskibraka ada tiga yaitu:
           <p class="about-text">
             Paskibraka Kota - bertugas di Pusat pemerintahan walikota/kabupaten
           </p>
+            <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
         </div>
       </div>
     </div>

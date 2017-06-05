@@ -17,17 +17,22 @@
                     </thead>
                     <tbody>
                        <?php
-                        //while($has=mysqli_fetch_row($qu))    
-                        /*$qu = "SELECT * FROM `artikel` ORDER BY `id_artikel`";
-                        $hasil = $mysqli->query($qu);
-                        $datahasil = $hasil->fetch_assoc();*/
                             $qu = $this->db->query("SELECT * FROM `artikel` ORDER BY `id_artikel`");
                             $qu = $qu->result_array();
+                            
                             foreach($qu as $d){ ?>
                                 <tr>
                                     <td><?php echo $d['tanggal'] ?></td>
                                     <td><?php echo $d['judul'] ?></td>
                                     <td><?php echo substr($d['isi'],0,30); ?>....</td>
+                                    <td>
+                                        <a href="<?php echo base_url()."crud/do_delete/".$d['id_artikel']; ?>">    <button>Hapus</button>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="<?php echo base_url()."crud/do_update1/".$d['id_artikel']; ?>">    <button>Edit</button>
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php } ?>
                     </tbody>
