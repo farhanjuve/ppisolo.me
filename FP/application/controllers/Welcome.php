@@ -16,15 +16,6 @@ class Welcome extends CI_Controller {
  
         echo $encript;
         echo $decript;
-        //$this->load->view('tabel', array('data' => $data));
-		// foreach ($data as $d) {
-		// 	echo "Kode barang : " . $d['kode_barang'] . "<br />";
-		// 	echo "Nama barang : " . $d['nama_barang'] . "<br />";
-		// 	echo "Satuan barang : " . $d['satuan'] . "<br />";
-		// 	echo "Jumlah barang : " . $d['jumlah'] . "<br />";
-		// 	echo "Harga barang : " . $d['harga'] . "<br />";
-		// 	echo "Kategori barang : " . $d['kategori'] . "<hr />";
-		// }
 	}
 
 	public function insert(){

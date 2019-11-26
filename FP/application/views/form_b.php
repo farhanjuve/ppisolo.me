@@ -45,13 +45,6 @@ if(isset($_POST['save']))
     } else {
         echo "masih salah";
     }
-    //mysqli_query($con,"insert into berita values('','".date('Y-m-d')."','".($getId[0]+1).$ext."','$judul','$konten')");
-    
-      /*echo "
-    <script>
-    location.assign('index.php?page=berita&ps=true1');
-    </script>
-    ";*/
 }
 elseif(isset($_POST['update']))
 {
